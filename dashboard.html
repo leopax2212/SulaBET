@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SulaBET - Dashboard</title>
+    <!-- Adicionando referência ao arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>SulaBET</h1>
+            </div>
+            
+            <div class="user-info">
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-tab="matches">Apostas</button>
+                    <button class="nav-tab" data-tab="history">Histórico</button>
+                </div>
+                
+                <div class="balance" id="userBalance">R$ 0,00</div>
+                <button class="nav-tab" id="walletBtn">Carteira</button>
+                <button class="logout-btn" id="logoutBtn">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Matches Section -->
+        <div class="content-section active" id="matchesSection">
+            <div class="matches-container">
+                <h2 class="section-title">Jogos Disponíveis</h2>
+                <div id="matchesList"></div>
+            </div>
+        </div>
+
+        <!-- History Section -->
+        <div class="content-section" id="historySection">
+            <div class="history-container">
+                <h2 class="section-title">Histórico de Apostas</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalBets">0</div>
+                        <div class="stat-label">Total de Apostas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalStaked">R$ 0,00</div>
+                        <div class="stat-label">Total Apostado</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="winRate">0%</div>
+                        <div class="stat-label">Taxa de Acerto</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="netProfit">R$ 0,00</div>
+                        <div class="stat-label">Lucro/Prejuízo</div>
+                    </div>
+                </div>
+
+                <div id="betHistoryList"></div>
+            </div>
+        </div>
+
+        <!-- Betting Slip -->
+        <div class="betting-slip">
+            <h3 class="slip-title">Cupom de Apostas</h3>
+            <div id="bettingSlipContent">
+                <div class="empty-slip">
+                    <p>Selecione uma aposta para começar</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Wallet Modal -->
+    <div class="modal" id="walletModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Carteira</h3>
+                <button class="close-btn" id="closeWalletModal">&times;</button>
+            </div>
+
+            <div class="wallet-tabs">
+                <button class="wallet-tab active" data-wallet-tab="deposit">Depósito</button>
+                <button class="wallet-tab" data-wallet-tab="withdraw">Saque</button>
+                <button class="wallet-tab" data-wallet-tab="transactions">Histórico</button>
+            </div>
+
+            <!-- Deposit -->
+            <div class="wallet-content active" id="depositContent">
+                <div class="form-group">
+                    <label>Valor do Depósito:</label>
+                    <input type="number" class="amount-input" id="depositAmount" placeholder="0,00" min="10" step="0.01">
+                </div>
+                
+                <div class="quick-amounts">
+                    <button class="quick-amount" data-amount="20">R$ 20</button>
+                    <button class="quick-amount" data-amount="50">R$ 50</button>
+                    <button class="quick-amount" data-amount="100">R$ 100</button>
+                    <button class="quick-amount" data-amount="200">R$ 200</button>
+                    <button class="quick-amount" data-amount="500">R$ 500</button>
+                    <button class="quick-amount" data-amount="1000">R$ 1000</button>
+                </div>
+                
+                <button class="btn" id="depositBtn">Depositar via PIX</button>
+            </div>
+
+            <!-- Withdraw -->
+            <div class="wallet-content" id="withdrawContent">
+                <div class="form-group">
+                    <label>Valor do Saque:</label>
+                    <input type="number" class="amount-input" id="withdrawAmount" placeholder="0,00" min="10" step="0.01">
+                </div>
+                
+                <div class="quick-amounts">
+                    <button class="quick-amount" data-amount="50">R$ 50</button>
+                    <button class="quick-amount" data-amount="100">R$ 100</button>
+                    <button class="quick-amount" data-amount="200">R$ 200</button>
+                </div>
+                
+                <button class="btn" id="withdrawBtn">Sacar via PIX</button>
+            </div>
+
+            <!-- Transactions -->
+            <div class="wallet-content" id="transactionsContent">
+                <div id="transactionsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adicionando referência ao arquivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>

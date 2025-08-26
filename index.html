@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SulaBET - Apostas Esportivas</title>
+    <!-- Adicionando referência ao arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <h1>SulaBET</h1>
+            <p>Apostas Esportivas</p>
+        </div>
+
+        <form id="authForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required>
+            </div>
+
+            <div id="registerFields" style="display: none;">
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Senha:</label>
+                    <input type="password" id="confirmPassword">
+                </div>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn">Entrar</button>
+            
+            <div id="message"></div>
+
+            <div class="toggle-text">
+                <span id="toggleText">Não tem conta? </span>
+                <span class="toggle-link" id="toggleLink">Registrar-se</span>
+            </div>
+        </form>
+    </div>
+
+    <!-- Adicionando referência ao arquivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
