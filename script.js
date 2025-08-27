@@ -558,9 +558,9 @@ function setupEventListeners() {
   }
 
   // Modal da carteira
-  const closeWalletModal = document.getElementById("closeWalletModal")
-  if (closeWalletModal) {
-    closeWalletModal.addEventListener("click", closeWalletModal)
+  const closeWalletModalBtn = document.getElementById("closeWalletModal")
+  if (closeWalletModalBtn) {
+    closeWalletModalBtn.addEventListener("click", closeWalletModal)
   }
 
   // Abas da carteira

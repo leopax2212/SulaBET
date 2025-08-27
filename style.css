@@ -16,6 +16,11 @@ body.login-page {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Adicionando imagem de fundo do Neymar */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("neymar-background.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 body.dashboard-page {
@@ -23,12 +28,14 @@ body.dashboard-page {
 }
 
 .login-container {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 400px;
+  /* Adicionando backdrop-filter para efeito de vidro */
+  backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -135,6 +142,7 @@ input:focus {
 
 /* Header */
 .header {
+  height: 80px;
   background: linear-gradient(135deg, #1a5f1a 0%, #2d7a2d 100%);
   color: white;
   padding: 1rem 0;
@@ -143,6 +151,7 @@ input:focus {
 
 .header-content {
   max-width: 1200px;
+  height: 75px;
   margin: 0 auto;
   padding: 0 1rem;
   display: flex;
@@ -150,10 +159,10 @@ input:focus {
   align-items: center;
 }
 
-.header .logo h1 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: white;
+.header .logo .logo-img {
+  height: 75px;
+  width: auto;
+  object-fit: contain;
 }
 
 .user-info {
