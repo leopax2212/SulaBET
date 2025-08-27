@@ -364,7 +364,6 @@ function placeBet() {
   currentUser.balance -= totalStake
   updateUserData()
 
-  // Salvar aposta
   const bet = {
     id: Date.now(),
     bets: [...selectedBets],
@@ -373,6 +372,7 @@ function placeBet() {
     potentialReturn: totalStake * selectedBets.reduce((acc, bet) => acc * bet.odd, 1),
     status: "pending",
     date: new Date().toISOString(),
+    userEmail: currentUser.email, // Adicionar email do usuário para histórico individual
   }
 
   const betHistory = JSON.parse(localStorage.getItem("sulabet_bet_history") || "[]")
@@ -430,16 +430,17 @@ function updateUserData() {
 // Carregar histórico de apostas
 function loadBetHistory() {
   const betHistory = JSON.parse(localStorage.getItem("sulabet_bet_history") || "[]")
+  const userBetHistory = betHistory.filter((bet) => bet.userEmail === currentUser.email)
   const historyList = document.getElementById("betHistoryList")
 
   if (!historyList) return
 
-  if (betHistory.length === 0) {
+  if (userBetHistory.length === 0) {
     historyList.innerHTML = "<p>Nenhuma aposta realizada ainda.</p>"
     return
   }
 
-  historyList.innerHTML = betHistory
+  historyList.innerHTML = userBetHistory
     .reverse()
     .map(
       (bet) => `
@@ -479,12 +480,13 @@ function getStatusText(status) {
 // Atualizar estatísticas
 function updateStats() {
   const betHistory = JSON.parse(localStorage.getItem("sulabet_bet_history") || "[]")
+  const userBetHistory = betHistory.filter((bet) => bet.userEmail === currentUser.email)
 
-  const totalBets = betHistory.length
-  const totalStaked = betHistory.reduce((acc, bet) => acc + bet.totalStake, 0)
-  const wonBets = betHistory.filter((bet) => bet.status === "won").length
+  const totalBets = userBetHistory.length
+  const totalStaked = userBetHistory.reduce((acc, bet) => acc + bet.totalStake, 0)
+  const wonBets = userBetHistory.filter((bet) => bet.status === "won").length
   const winRate = totalBets > 0 ? (wonBets / totalBets) * 100 : 0
-  const totalReturns = betHistory
+  const totalReturns = userBetHistory
     .filter((bet) => bet.status === "won")
     .reduce((acc, bet) => acc + bet.potentialReturn, 0)
   const netProfit = totalReturns - totalStaked
